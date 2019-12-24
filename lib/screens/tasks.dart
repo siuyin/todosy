@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:todosy/constants.dart';
 import 'package:todosy/widgets/todo_list.dart';
+import 'package:todosy/screens/add_task.dart';
 
 class TasksScreen extends StatelessWidget {
+  final TodoList list = TodoList();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +16,12 @@ class TasksScreen extends StatelessWidget {
           size: 35,
         ),
         onPressed: () {
-          print('pushed Floating Action Button');
+          showModalBottomSheet(
+            context: context,
+            builder: (context) => AddTaskScreen(
+              list: list,
+            ),
+          );
         },
       ),
       backgroundColor: kPrimaryAppColor,
@@ -64,22 +71,11 @@ class TasksScreen extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                child: TodoList(
-                  list: [
-                    TodoItem(text: 'one'),
-                    TodoItem(text: 'two'),
-                  ],
-                ),
+                child: list,
                 margin: EdgeInsets.only(
                   top: 10,
                 ),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
-                  ),
-                ),
+                decoration: kPrimaryBoxDecoration,
               ),
             ),
           ],

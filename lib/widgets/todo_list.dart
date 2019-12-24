@@ -1,22 +1,50 @@
 import 'package:flutter/material.dart';
 
-class TodoList extends StatelessWidget {
-  final List<TodoItem> list;
-  const TodoList({
-    Key key,
-    this.list,
-  }) : super(key: key);
+class TodoList extends StatefulWidget {
+  void gerbau(String text) {
+    print('gerbau: $text');
+  }
+
+  @override
+  _TodoListState createState() => _TodoListState();
+}
+
+class _TodoListState extends State<TodoList> {
+  List<TodoItem> list = [
+    TodoItem(text: 'One'),
+    TodoItem(text: 'Two'),
+  ];
+
+  void addTodoItem(TodoItem item) {
+    setState(() {
+      list.add(item);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Padding(
       padding: EdgeInsets.only(
         top: 10,
         left: 10,
         right: 10,
       ),
-      children: list,
+      child: ListView.builder(
+          itemCount: list.length,
+          itemBuilder: (context, index) {
+            return list[index];
+          }),
     );
+
+//    return ListView(
+//      padding: EdgeInsets.only(
+//        top: 10,
+//        left: 10,
+//        right: 10,
+//      ),
+//      children:
+//          list.isEmpty ? <Widget>[Text('Press + below to add a task..')] : list,
+//    );
   }
 }
 
@@ -42,7 +70,6 @@ class _TodoItemState extends State<TodoItem> {
         setState(() {
           done = !done;
         });
-        print('tapped $text');
       },
       title: Text(
         text,
