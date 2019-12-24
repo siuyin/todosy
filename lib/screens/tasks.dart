@@ -3,8 +3,30 @@ import 'package:todosy/constants.dart';
 import 'package:todosy/widgets/todo_list.dart';
 import 'package:todosy/screens/add_task.dart';
 
-class TasksScreen extends StatelessWidget {
-  final TodoList list = TodoList();
+class TasksScreen extends StatefulWidget {
+  @override
+  _TasksScreenState createState() => _TasksScreenState();
+}
+
+class _TasksScreenState extends State<TasksScreen> {
+  TodoList list;
+  List<TodoItem> todos = [
+    TodoItem(text: 'One'),
+    TodoItem(text: 'Two'),
+  ];
+  int taskCount = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    list = TodoList(
+      taskCountCallback: (n) {
+        taskCount = n;
+      },
+      list: todos,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +82,7 @@ class TasksScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '12 tasks',
+                    '$taskCount Todos',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,

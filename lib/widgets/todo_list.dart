@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TodoList extends StatefulWidget {
+  final Function taskCountCallback;
+  final List<TodoItem> list;
+  TodoList({this.taskCountCallback, this.list});
+
   void gerbau(String text) {
     print('gerbau: $text');
   }
@@ -10,41 +14,34 @@ class TodoList extends StatefulWidget {
 }
 
 class _TodoListState extends State<TodoList> {
-  List<TodoItem> list = [
-    TodoItem(text: 'One'),
-    TodoItem(text: 'Two'),
-  ];
-
-  void addTodoItem(TodoItem item) {
-    setState(() {
-      list.add(item);
-    });
+  @override
+  void initState() {
+    widget.taskCountCallback(widget.list.length);
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    widget.taskCountCallback(widget.list.length);
     return Padding(
       padding: EdgeInsets.only(
         top: 10,
         left: 10,
         right: 10,
       ),
-      child: ListView.builder(
-          itemCount: list.length,
-          itemBuilder: (context, index) {
-            return list[index];
-          }),
+      child: widget.list.isEmpty
+          ? Center(
+              child: Text(
+                'Press + icon to add todo ...',
+                style: TextStyle(fontSize: 18),
+              ),
+            )
+          : ListView.builder(
+              itemCount: widget.list.length,
+              itemBuilder: (context, index) {
+                return widget.list[index];
+              }),
     );
-
-//    return ListView(
-//      padding: EdgeInsets.only(
-//        top: 10,
-//        left: 10,
-//        right: 10,
-//      ),
-//      children:
-//          list.isEmpty ? <Widget>[Text('Press + below to add a task..')] : list,
-//    );
   }
 }
 
