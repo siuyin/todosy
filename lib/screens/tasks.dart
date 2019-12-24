@@ -10,10 +10,7 @@ class TasksScreen extends StatefulWidget {
 
 class _TasksScreenState extends State<TasksScreen> {
 //  TodoList list;
-  List<TodoItem> todos = [
-    TodoItem(text: 'One'),
-    TodoItem(text: 'Two'),
-  ];
+  List<TodoItem> todos = [];
   int taskCount = 0;
 
   @override
@@ -42,13 +39,9 @@ class _TasksScreenState extends State<TasksScreen> {
             context: context,
             builder: (context) => AddTaskScreen(
               addTaskCallback: (String task) {
-                print('in callback: $task, length: ${todos.length}');
-
                 setState(() {
                   todos.add(TodoItem(text: task));
                 });
-
-                print('len of todos: ${todos.length}');
               },
             ),
           );

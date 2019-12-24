@@ -42,7 +42,6 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
             ),
             FlatButton(
               onPressed: () {
-                print('about to callback with $task');
                 widget.addTaskCallback(task);
                 Navigator.pop(context);
               },
