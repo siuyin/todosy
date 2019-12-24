@@ -20,15 +20,15 @@ class _TasksScreenState extends State<TasksScreen> {
   void initState() {
     super.initState();
     list = TodoList(
-      taskCountCallback: (n) {
-        taskCount = n;
-      },
       list: todos,
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      taskCount = todos.length;
+    });
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: kPrimaryAppColor,

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TodoList extends StatefulWidget {
-  final Function taskCountCallback;
   final List<TodoItem> list;
-  TodoList({this.taskCountCallback, this.list});
+  TodoList({this.list});
 
   void gerbau(String text) {
     print('gerbau: $text');
@@ -15,14 +14,7 @@ class TodoList extends StatefulWidget {
 
 class _TodoListState extends State<TodoList> {
   @override
-  void initState() {
-    widget.taskCountCallback(widget.list.length);
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    widget.taskCountCallback(widget.list.length);
     return Padding(
       padding: EdgeInsets.only(
         top: 10,
