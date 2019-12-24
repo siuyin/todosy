@@ -116,26 +116,21 @@ class _TodoItemState extends State<TodoItem> {
       padding: const EdgeInsets.symmetric(
         vertical: 8.0,
       ),
-      child: GestureDetector(
+      child: ListTile(
         onTap: () {
           setState(() {
             done = !done;
           });
           print('tapped $text');
         },
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(
-              text,
-              style: TextStyle(
-                fontSize: 18,
-                color: done ? Colors.grey : Colors.black,
-              ),
-            ),
-            Icon(done ? Icons.check_box : Icons.check_box_outline_blank),
-          ],
+        title: Text(
+          text,
+          style: TextStyle(
+            fontSize: 18,
+            color: done ? Colors.grey : Colors.black,
+          ),
         ),
+        trailing: Icon(done ? Icons.check_box : Icons.check_box_outline_blank),
       ),
     );
   }
