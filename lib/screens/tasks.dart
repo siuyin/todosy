@@ -112,26 +112,23 @@ class _TodoItemState extends State<TodoItem> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 8.0,
-      ),
-      child: ListTile(
-        onTap: () {
-          setState(() {
-            done = !done;
-          });
-          print('tapped $text');
-        },
-        title: Text(
-          text,
-          style: TextStyle(
-            fontSize: 18,
-            color: done ? Colors.grey : Colors.black,
-          ),
+    return ListTile(
+      dense: true,
+      contentPadding: EdgeInsets.only(left: 3),
+      onTap: () {
+        setState(() {
+          done = !done;
+        });
+        print('tapped $text');
+      },
+      title: Text(
+        text,
+        style: TextStyle(
+          fontSize: 18,
+          color: done ? Colors.grey : Colors.black,
         ),
-        trailing: Icon(done ? Icons.check_box : Icons.check_box_outline_blank),
       ),
+      trailing: Icon(done ? Icons.check_box : Icons.check_box_outline_blank),
     );
   }
 }
