@@ -51,7 +51,10 @@ class _TodoItemState extends State<TodoItem> {
           color: done ? Colors.grey : Colors.black,
         ),
       ),
-      trailing: Icon(done ? Icons.check_box : Icons.check_box_outline_blank),
+      trailing: Icon(
+        done ? Icons.check_box : Icons.check_box_outline_blank,
+        color: done ? Colors.grey : Colors.black,
+      ),
     );
   }
 }
