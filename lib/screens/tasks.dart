@@ -9,7 +9,7 @@ class TasksScreen extends StatefulWidget {
 }
 
 class _TasksScreenState extends State<TasksScreen> {
-  TodoList list;
+//  TodoList list;
   List<TodoItem> todos = [
     TodoItem(text: 'One'),
     TodoItem(text: 'Two'),
@@ -19,9 +19,9 @@ class _TasksScreenState extends State<TasksScreen> {
   @override
   void initState() {
     super.initState();
-    list = TodoList(
-      list: todos,
-    );
+//    list = TodoList(
+//      list: todos,
+//    );
   }
 
   @override
@@ -41,7 +41,15 @@ class _TasksScreenState extends State<TasksScreen> {
           showModalBottomSheet(
             context: context,
             builder: (context) => AddTaskScreen(
-              list: list,
+              addTaskCallback: (String task) {
+                print('in callback: $task, length: ${todos.length}');
+
+                setState(() {
+                  todos.add(TodoItem(text: task));
+                });
+
+                print('len of todos: ${todos.length}');
+              },
             ),
           );
         },
@@ -93,7 +101,7 @@ class _TasksScreenState extends State<TasksScreen> {
             ),
             Expanded(
               child: Container(
-                child: list,
+                child: TodoList(list: todos),
                 margin: EdgeInsets.only(
                   top: 10,
                 ),

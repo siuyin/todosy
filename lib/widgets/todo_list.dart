@@ -4,8 +4,10 @@ class TodoList extends StatefulWidget {
   final List<TodoItem> list;
   TodoList({this.list});
 
-  void gerbau(String text) {
-    print('gerbau: $text');
+  void addTodo(String task) {
+    list.add(TodoItem(
+      text: task,
+    ));
   }
 
   @override

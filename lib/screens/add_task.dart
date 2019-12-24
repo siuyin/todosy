@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:todosy/constants.dart';
-import 'package:todosy/widgets/todo_list.dart';
 
 class AddTaskScreen extends StatefulWidget {
-  final TodoList list;
+  final Function addTaskCallback;
 
-  AddTaskScreen({this.list});
+  AddTaskScreen({this.addTaskCallback});
   @override
   _AddTaskScreenState createState() => _AddTaskScreenState();
 }
@@ -43,7 +42,9 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
             ),
             FlatButton(
               onPressed: () {
-                widget.list.gerbau(task);
+                print('about to callback with $task');
+                widget.addTaskCallback(task);
+                Navigator.pop(context);
               },
               child: Container(
                 width: 150,
