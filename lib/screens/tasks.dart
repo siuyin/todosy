@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todosy/constants.dart';
+import 'package:todosy/widgets/todo_list.dart';
 
 class TasksScreen extends StatelessWidget {
   @override
@@ -63,13 +64,8 @@ class TasksScreen extends StatelessWidget {
             ),
             Expanded(
               child: Container(
-                child: ListView(
-                  padding: EdgeInsets.only(
-                    top: 10,
-                    left: 10,
-                    right: 10,
-                  ),
-                  children: <Widget>[
+                child: TodoList(
+                  list: [
                     TodoItem(text: 'one'),
                     TodoItem(text: 'two'),
                   ],
@@ -89,46 +85,6 @@ class TasksScreen extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class TodoItem extends StatefulWidget {
-  final String text;
-
-  TodoItem({this.text});
-  @override
-  _TodoItemState createState() => _TodoItemState();
-}
-
-class _TodoItemState extends State<TodoItem> {
-  String text;
-  bool done = false;
-  @override
-  void initState() {
-    text = widget.text;
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      dense: true,
-      contentPadding: EdgeInsets.only(left: 3),
-      onTap: () {
-        setState(() {
-          done = !done;
-        });
-        print('tapped $text');
-      },
-      title: Text(
-        text,
-        style: TextStyle(
-          fontSize: 18,
-          color: done ? Colors.grey : Colors.black,
-        ),
-      ),
-      trailing: Icon(done ? Icons.check_box : Icons.check_box_outline_blank),
     );
   }
 }
