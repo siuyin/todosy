@@ -23,11 +23,6 @@ class TodoList extends StatelessWidget {
               itemCount: Provider.of<Todos>(context).todos.length,
               itemBuilder: (context, index) =>
                   Provider.of<Todos>(context).todos[index],
-
-//              itemCount: widget.list.length,
-//              itemBuilder: (context, index) {
-//                return widget.list[index];
-//              },
             ),
     );
   }
