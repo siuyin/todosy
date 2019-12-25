@@ -12,18 +12,21 @@ class TodoList extends StatelessWidget {
         right: 10,
       ),
       //      widget.list.isEmpty
-      child: Provider.of<Todos>(context).todos.isEmpty
-          ? Center(
-              child: Text(
-                'Press + icon to add todo ...',
-                style: TextStyle(fontSize: 18),
-              ),
-            )
-          : ListView.builder(
-              itemCount: Provider.of<Todos>(context).todos.length,
-              itemBuilder: (context, index) =>
-                  Provider.of<Todos>(context).todos[index],
-            ),
+      child: Consumer<Todos>(
+        builder: (context, list, _) {
+          return list.todos.isEmpty
+              ? Center(
+                  child: Text(
+                    'Press + icon to add todo ...',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                )
+              : ListView.builder(
+                  itemCount: list.todos.length,
+                  itemBuilder: (context, index) => list.todos[index],
+                );
+        },
+      ),
     );
   }
 }
