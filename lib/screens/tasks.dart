@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:todosy/constants.dart';
 import 'package:todosy/widgets/todo_list.dart';
 import 'package:todosy/screens/add_task.dart';
+import 'package:todosy/widgets/todos_provider.dart';
 
 class TasksScreen extends StatefulWidget {
   @override
@@ -106,14 +107,5 @@ class _TasksScreenState extends State<TasksScreen> {
         ),
       ),
     );
-  }
-}
-
-class Todos with ChangeNotifier {
-  List<TodoItem> todos = [];
-
-  void add(String task) {
-    todos.add(TodoItem(text: task));
-    notifyListeners();
   }
 }
