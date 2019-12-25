@@ -3,6 +3,7 @@ import 'package:todosy/constants.dart';
 import 'package:todosy/widgets/todo_list.dart';
 import 'package:todosy/screens/add_task.dart';
 
+
 class TasksScreen extends StatefulWidget {
   @override
   _TasksScreenState createState() => _TasksScreenState();
@@ -10,7 +11,7 @@ class TasksScreen extends StatefulWidget {
 
 class _TasksScreenState extends State<TasksScreen> {
 //  TodoList list;
-  List<TodoItem> todos = [];
+//  List<TodoItem> todos = [];
   int taskCount = 0;
 
   @override
@@ -23,9 +24,9 @@ class _TasksScreenState extends State<TasksScreen> {
 
   @override
   Widget build(BuildContext context) {
-    setState(() {
-      taskCount = todos.length;
-    });
+//    setState(() {
+//      taskCount = todos.length;
+//    });
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: kPrimaryAppColor,
@@ -38,12 +39,12 @@ class _TasksScreenState extends State<TasksScreen> {
           showModalBottomSheet(
             context: context,
             builder: (context) => AddTaskScreen(
-              addTaskCallback: (String task) {
-                setState(() {
-                  todos.add(TodoItem(text: task));
-                });
-              },
-            ),
+//              addTaskCallback: (String task) {
+//                setState(() {
+//                  todos.add(TodoItem(text: task));
+//                });
+//              },
+                ),
           );
         },
       ),
@@ -94,7 +95,7 @@ class _TasksScreenState extends State<TasksScreen> {
             ),
             Expanded(
               child: Container(
-                child: TodoList(list: todos),
+                child: TodoList(),
                 margin: EdgeInsets.only(
                   top: 10,
                 ),
@@ -105,5 +106,14 @@ class _TasksScreenState extends State<TasksScreen> {
         ),
       ),
     );
+  }
+}
+
+class Todos with ChangeNotifier {
+  List<TodoItem> todos = [];
+
+  void add(String task) {
+    todos.add(TodoItem(text: task));
+    notifyListeners();
   }
 }

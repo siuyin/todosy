@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todosy/screens/tasks.dart';
 
 class TodoList extends StatefulWidget {
-  final List<TodoItem> list;
-  TodoList({this.list});
-
-  void addTodo(String task) {
-    list.add(TodoItem(
-      text: task,
-    ));
-  }
+//  final List<TodoItem> list;
+//  TodoList({this.list});
+//
+//  void addTodo(String task) {
+//    list.add(TodoItem(
+//      text: task,
+//    ));
+//  }
 
   @override
   _TodoListState createState() => _TodoListState();
@@ -23,7 +25,8 @@ class _TodoListState extends State<TodoList> {
         left: 10,
         right: 10,
       ),
-      child: widget.list.isEmpty
+      //      widget.list.isEmpty
+      child: Provider.of<Todos>(context).todos.isEmpty
           ? Center(
               child: Text(
                 'Press + icon to add todo ...',
@@ -31,10 +34,15 @@ class _TodoListState extends State<TodoList> {
               ),
             )
           : ListView.builder(
-              itemCount: widget.list.length,
-              itemBuilder: (context, index) {
-                return widget.list[index];
-              }),
+              itemCount: Provider.of<Todos>(context).todos.length,
+              itemBuilder: (context, index) =>
+                  Provider.of<Todos>(context).todos[index],
+
+//              itemCount: widget.list.length,
+//              itemBuilder: (context, index) {
+//                return widget.list[index];
+//              },
+            ),
     );
   }
 }
