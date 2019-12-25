@@ -11,23 +11,10 @@ class TasksScreen extends StatefulWidget {
 }
 
 class _TasksScreenState extends State<TasksScreen> {
-//  TodoList list;
-//  List<TodoItem> todos = [];
   int taskCount = 0;
 
   @override
-  void initState() {
-    super.initState();
-//    list = TodoList(
-//      list: todos,
-//    );
-  }
-
-  @override
   Widget build(BuildContext context) {
-//    setState(() {
-//      taskCount = todos.length;
-//    });
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: kPrimaryAppColor,
@@ -39,13 +26,7 @@ class _TasksScreenState extends State<TasksScreen> {
         onPressed: () {
           showModalBottomSheet(
             context: context,
-            builder: (context) => AddTaskScreen(
-//              addTaskCallback: (String task) {
-//                setState(() {
-//                  todos.add(TodoItem(text: task));
-//                });
-//              },
-                ),
+            builder: (context) => AddTaskScreen(),
           );
         },
       ),

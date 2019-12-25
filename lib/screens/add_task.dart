@@ -4,9 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:todosy/widgets/todos_provider.dart';
 
 class AddTaskScreen extends StatefulWidget {
-//  final Function addTaskCallback;
-//
-//  AddTaskScreen({this.addTaskCallback});
   @override
   _AddTaskScreenState createState() => _AddTaskScreenState();
 }

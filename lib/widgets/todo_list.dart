@@ -3,15 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:todosy/widgets/todos_provider.dart';
 
 class TodoList extends StatefulWidget {
-//  final List<TodoItem> list;
-//  TodoList({this.list});
-//
-//  void addTodo(String task) {
-//    list.add(TodoItem(
-//      text: task,
-//    ));
-//  }
-
   @override
   _TodoListState createState() => _TodoListState();
 }
