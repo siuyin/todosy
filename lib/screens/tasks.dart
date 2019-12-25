@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:todosy/constants.dart';
 import 'package:todosy/widgets/todo_list.dart';
 import 'package:todosy/screens/add_task.dart';
-
 
 class TasksScreen extends StatefulWidget {
   @override
@@ -84,7 +84,7 @@ class _TasksScreenState extends State<TasksScreen> {
                     ),
                   ),
                   Text(
-                    '$taskCount Todos',
+                    '${Provider.of<Todos>(context).todos.length} Todos',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
