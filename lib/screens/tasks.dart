@@ -5,14 +5,7 @@ import 'package:todosy/widgets/todo_list.dart';
 import 'package:todosy/screens/add_task.dart';
 import 'package:todosy/widgets/todos_provider.dart';
 
-class TasksScreen extends StatefulWidget {
-  @override
-  _TasksScreenState createState() => _TasksScreenState();
-}
-
-class _TasksScreenState extends State<TasksScreen> {
-  int taskCount = 0;
-
+class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -2,12 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todosy/widgets/todos_provider.dart';
 
-class TodoList extends StatefulWidget {
-  @override
-  _TodoListState createState() => _TodoListState();
-}
-
-class _TodoListState extends State<TodoList> {
+class TodoList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
