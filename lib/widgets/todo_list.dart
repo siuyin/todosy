@@ -18,7 +18,7 @@ class TodoList extends StatelessWidget {
           return list.todos.isEmpty
               ? Center(
                   child: Text(
-                    'Press + icon to add todo ...',
+                    'Press + icon to add todo ...\n\nLong press to delete todo.',
                     style: TextStyle(fontSize: 18),
                   ),
                 )
