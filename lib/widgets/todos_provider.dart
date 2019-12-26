@@ -27,6 +27,11 @@ class Todos with ChangeNotifier {
     }
     return notDone;
   }
+
+  void delete(Todo todo) {
+    todos.remove(todo);
+    notifyListeners();
+  }
 }
 
 class Todo {

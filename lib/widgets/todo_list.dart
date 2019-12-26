@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todosy/constants.dart';
 import 'package:todosy/widgets/todos_provider.dart';
 
 class TodoList extends StatelessWidget {
@@ -49,8 +50,16 @@ class TodoItem extends StatelessWidget {
   final Todos list;
   final Todo todo;
   final Function toggleCallback;
+  final Function deleteCallback;
 
-  TodoItem({this.text, this.done, this.list, this.todo, this.toggleCallback});
+  TodoItem({
+    this.text,
+    this.done,
+    this.list,
+    this.todo,
+    this.toggleCallback,
+    this.deleteCallback,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +68,9 @@ class TodoItem extends StatelessWidget {
       contentPadding: EdgeInsets.only(left: 3),
       onTap: () {
         list.toggle(todo);
+      },
+      onLongPress: () {
+        list.delete(todo);
       },
       title: Text(
         text,
@@ -69,7 +81,7 @@ class TodoItem extends StatelessWidget {
       ),
       trailing: Icon(
         done ? Icons.check_box : Icons.check_box_outline_blank,
-        color: Colors.black,
+        color: kPrimaryAppColor,
       ),
     );
   }
