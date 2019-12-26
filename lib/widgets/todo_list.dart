@@ -23,7 +23,19 @@ class TodoList extends StatelessWidget {
                 )
               : ListView.builder(
                   itemCount: list.todos.length,
-                  itemBuilder: (context, index) => list.todos[index],
+                  itemBuilder: (context, index) {
+                    Todo todo = list.todos[index];
+                    return TodoItem(
+                      text: todo.text,
+                      done: todo.done,
+                      list: list,
+                      todo: todo,
+                      toggleCallback: () {
+                        print('toggle callback');
+                        list.toggle(todo);
+                      },
+                    );
+                  },
                 );
         },
       ),
@@ -31,28 +43,22 @@ class TodoList extends StatelessWidget {
   }
 }
 
-class TodoItem extends StatefulWidget {
+class TodoItem extends StatelessWidget {
   final String text;
+  final bool done;
+  final Todos list;
+  final Todo todo;
+  final Function toggleCallback;
 
-  TodoItem({this.text});
-  @override
-  _TodoItemState createState() => _TodoItemState();
-}
-
-class _TodoItemState extends State<TodoItem> {
-  String text;
-  bool done = false;
+  TodoItem({this.text, this.done, this.list, this.todo, this.toggleCallback});
 
   @override
   Widget build(BuildContext context) {
-    text = widget.text;
     return ListTile(
       dense: true,
       contentPadding: EdgeInsets.only(left: 3),
       onTap: () {
-        setState(() {
-          done = !done;
-        });
+        list.toggle(todo);
       },
       title: Text(
         text,

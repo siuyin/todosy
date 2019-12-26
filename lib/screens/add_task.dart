@@ -41,7 +41,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
             ),
             FlatButton(
               onPressed: () {
-                Provider.of<Todos>(context).add(task);
+                Provider.of<Todos>(context).add(task: task, done: false);
 //                widget.addTaskCallback(task);
                 Navigator.pop(context);
               },

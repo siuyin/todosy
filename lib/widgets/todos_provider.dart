@@ -1,11 +1,26 @@
-import 'package:todosy/widgets/todo_list.dart';
 import 'package:flutter/material.dart';
 
 class Todos with ChangeNotifier {
-  List<TodoItem> todos = [];
+  List<Todo> todos = [];
 
-  void add(String task) {
-    todos.add(TodoItem(text: task));
+  void add({String task, bool done}) {
+    todos.add(
+      Todo(
+        text: task,
+        done: done,
+      ),
+    );
     notifyListeners();
   }
+
+  void toggle(Todo todo) {
+    todo.done = !todo.done;
+    notifyListeners();
+  }
+}
+
+class Todo {
+  String text;
+  bool done;
+  Todo({this.text, this.done = false});
 }
