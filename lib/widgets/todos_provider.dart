@@ -32,6 +32,8 @@ class Todos with ChangeNotifier {
     todos.remove(todo);
     notifyListeners();
   }
+
+  // TODO: use json_serializable to serialize nested objects
 }
 
 class Todo {
