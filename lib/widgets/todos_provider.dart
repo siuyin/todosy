@@ -17,6 +17,16 @@ class Todos with ChangeNotifier {
     todo.done = !todo.done;
     notifyListeners();
   }
+
+  int undone() {
+    int notDone = 0;
+    for (Todo t in todos) {
+      if (!t.done) {
+        notDone++;
+      }
+    }
+    return notDone;
+  }
 }
 
 class Todo {

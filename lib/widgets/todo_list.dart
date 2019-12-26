@@ -69,7 +69,7 @@ class TodoItem extends StatelessWidget {
       ),
       trailing: Icon(
         done ? Icons.check_box : Icons.check_box_outline_blank,
-        color: done ? Colors.grey : Colors.black,
+        color: Colors.black,
       ),
     );
   }

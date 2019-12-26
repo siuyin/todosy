@@ -59,7 +59,7 @@ class TasksScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '${Provider.of<Todos>(context).todos.length} Todos',
+                    '${Provider.of<Todos>(context).undone()} / ${Provider.of<Todos>(context).todos.length} Todos',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
